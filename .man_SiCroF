@@ -4,6 +4,7 @@ Here, fortran script runs with  SiCroF-kernel.
 Commands:
 
 cpu-core    : Change number of cpu-core
+opencl      : opencl mode (on or off)
 exit        : Exit fortran-inreractive mode
 install     : Install all componets
 man         : Mannual

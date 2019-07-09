@@ -8,4 +8,5 @@ program main
     call mpi_comm_size(mpi_comm_world,petot,ierr)
     print *, "My rank is :",my_rank,"Total process is : ",petot
     call mpi_finalize(ierr)
+
 end program main
