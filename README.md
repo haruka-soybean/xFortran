@@ -12,6 +12,8 @@ macOS, Linux
 ```
 sudo chmod +x install
 sudo chmod +x xFortran
+sudo chmod +x update
+./install
 ```
 
 # How to run
@@ -20,10 +22,19 @@ sudo chmod +x xFortran
 ./xFortran
 ```
 
+# How to update
+
+```
+./update
+```
+
+
+
 # Commands
 
 ```
 cpu-core    : Change number of cpu-core
+opencl      : on/off opencl
 exit        : Exit fortran-inreractive mode
 install     : Install all componets
 man         : Mannual
