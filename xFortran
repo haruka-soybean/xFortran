@@ -19,6 +19,13 @@ compress="compress"
 ls="ls"
 f90="f90"
 run="run"
+opencl="opencl"
+openclmode="off"
+fortranmode="gfortran"
+gfortran="gfortran"
+ifortran="ifortran"
+off="off"
+on="on"
 
 echo "Please input fortran script *.f90 | or check manual by 'man'  "
 echo "  "
@@ -75,14 +82,30 @@ do
         echo "Current num of cpu-core is :: $numcore "
         continue
     fi
+    if [ "$command" = "$opencl" ]; then
+        echo "Current num of opencl mode is :: $openclmode "
+        echo "Please input num of cpu-core"
+        read openclmode
+        echo "Current num of cpu-core is :: $openclmode "
+        continue
+    fi
 
     EXTENSION="${command##*.}"
     echo "extension is $EXTENSION"
     if [ "$EXTENSION" = "$f90" ]; then
+        if [ "$openclmode" = "$off" ];then
+        echo ">"
+        mpifort "$command" 
+        mpirun -np "$numcore" ./a.out        
+        continue
+        fi
+        
+        if [ "$openclmode" = "$on" ];then
         echo ">"
         mpifort "$command" -lOpenCL
         mpirun -np "$numcore" ./a.out        
         continue
+        fi
     fi
 
     echo "$command"
