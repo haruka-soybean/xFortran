@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/bash 
 
 echo ">"
 echo "xFortran >> Fortran Interactive mode for Linux & OS X... "
@@ -33,34 +33,34 @@ do
 
 
 
-    if [ $command = $exitc ]; then
+    if [ "$command" = "$exitc" ]; then
         exit 0
     fi
-    if [ $command = $man ]; then
+    if [ "$command" = "$man" ]; then
         cat ".man_SiCroF"
         continue
     fi
-    if [ $command = $man1 ]; then
+    if [ "$command" = "$man1" ]; then
         cat ".man_SiCroF"
         continue
     fi
-    if [ $command = $man2 ]; then
+    if [ "$command" = "$man2" ]; then
         cat ".man_SiCroF"
         continue
     fi
-    if [ $command = $install ]; then
+    if [ "$command" = "$install" ]; then
         ./install
         continue
     fi
-    if [ $command = $compress ]; then
+    if [ "$command" = "$compress" ]; then
         ./bin/compress
         continue
     fi
-    if [ $command = $run ]; then
+    if [ "$command" = "$run" ]; then
         ./bin/run
         continue
     fi
-    if [ $command = $ls ]; then
+    if [ "$command" = "$ls" ]; then
         echo " "
         pwd
         echo " "
@@ -68,7 +68,7 @@ do
         echo " "
         continue
     fi
-    if [ $command = $cpucore ]; then
+    if [ "$command" = "$cpucore" ]; then
         echo "Current num of cpu-core is :: $numcore "
         echo "Please input num of cpu-core"
         read numcore
@@ -76,16 +76,16 @@ do
         continue
     fi
 
-    EXTENSION=${command##*.}
+    EXTENSION="${command##*.}"
     echo "extension is $EXTENSION"
-    if [ $EXTENSION = $f90 ]; then
+    if [ "$EXTENSION" = "$f90" ]; then
         echo ">"
-        mpifort $command -lOpenCL
-        mpirun -np $numcore ./a.out        
+        mpifort "$command" -lOpenCL
+        mpirun -np "$numcore" ./a.out        
         continue
     fi
 
     echo "$command"
-    $command
+    "$command"
 done    
 
